@@ -9,7 +9,7 @@ import {
 } from "@/components/ui/card";
 import { Button } from "@/components/ui/button"; // Assuming Button component exists
 
-function FlipCard({ title, question, answer, difficult = "Easy" }) {
+function FlipCard({ title, question, answer, difficult }) {
   const [isFlipped, setIsFlipped] = useState(false);
 
   const handleToggle = () => {
