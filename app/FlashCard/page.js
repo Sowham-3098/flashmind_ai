@@ -1,42 +1,40 @@
-/**
- * v0 by Vercel.
- * @see https://v0.dev/t/wzjSwp101cy
- * Documentation: https://v0.dev/docs#integrating-generated-code-into-your-nextjs-app
- */
-"use client"
+"use client";
 
+<<<<<<< HEAD
 import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 
 import Card from "../components/Card"
 import Layout from "../components/Layout"
+=======
+import { useState } from "react";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
+import Card from "../components/Card";
+import Layout from "../components/Layout";
+import { generateFlashcards } from "../api/api"; // Import the generateFlashcards function
+>>>>>>> c98bb979affb3479852bbf966ff23a4c02491355
 
 export default function Component() {
-  const [topic, setTopic] = useState("")
-  const [questions, setQuestions] = useState([])
+  const [topic, setTopic] = useState("");
+  const [questions, setQuestions] = useState([]);
+
   const handleTopicChange = (e) => {
-    setTopic(e.target.value)
-  }
+    setTopic(e.target.value);
+  };
+
   const generateQuestions = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch('https://api.api-ninjas.com/v1/riddles?limit=8', {
-        headers: {
-          'X-Api-Key': 'NEv844FFjeGw3eMJlXxoSg==freytZWdZ9yir0TW'
-        }
-      });
-
-
-      if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
-
-      const result = await response.json();
-      setQuestions(result);
-      console.log(result);
+      const flashcards = await generateFlashcards(topic, "medium"); 
+      setQuestions(flashcards);
+      console.log(flashcards);
     } catch (error) {
-      console.error('Error:', error.message);
+      console.error("Error:", error.message);
     }
-  }
+  };
+
   return (
     <Layout>
       <div className="container mx-auto py-12 px-4 sm:px-6 lg:px-8">
@@ -53,18 +51,28 @@ export default function Component() {
               onChange={handleTopicChange}
               className="flex-1 mr-4"
             />
-            <Button type="submit" >Generate</Button>
+            <Button type="submit">Generate</Button>
           </form>
-          <div className=" flex justify-center items-center">
-            <div className="grid grid-cols-3 ">
+          <div className="flex justify-center items-center">
+            <div className="grid grid-cols-3">
               {questions.map((question, index) => (
-                <Card key={index} title={question.title} question={question.question} answer={question.answer} />
-
+                <Card
+                  key={index}
+                  title={`Flashcard ${index + 1}`}
+                  question={question.front}
+                  answer={question.back}
+                  difficult="medium"
+                />
               ))}
             </div>
           </div>
         </div>
       </div>
     </Layout>
+<<<<<<< HEAD
   )
 }
+=======
+  );
+}
+>>>>>>> c98bb979affb3479852bbf966ff23a4c02491355
