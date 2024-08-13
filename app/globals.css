@@ -67,3 +67,34 @@
     @apply bg-background text-foreground;
   }
 }
+.flip-card-container {
+  perspective: 1000px;
+  margin: 10px;
+}
+
+.flip-card {
+  width: 350px;
+  height: 100%;
+  position: relative;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+  cursor: pointer;
+}
+
+.flip-card.flipped {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front,
+.flip-card-back {
+  width: 100%;
+  backface-visibility: hidden;
+}
+
+.flip-card-front {
+  z-index: 2;
+}
+
+.flip-card-back {
+  transform: rotateY(180deg);
+}

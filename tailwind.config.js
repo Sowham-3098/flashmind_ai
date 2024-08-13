@@ -71,6 +71,22 @@ module.exports = {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
       },
+      perspective: {
+        1000: "1000px",
+      },
+      transitionDuration: {
+        700: "700ms",
+      },
+      transformStyle: {
+        "3d": "preserve-3d",
+      },
+      rotate: {
+        "y-180": "rotateY(180deg)",
+      },
+      backfaceVisibility: {
+        hidden: "hidden",
+      },
+
     },
   },
   plugins: [require("tailwindcss-animate")],
