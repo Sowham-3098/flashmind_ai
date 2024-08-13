@@ -4,6 +4,7 @@ import Image from "next/image";
 import logo from "../../asset/img/logo.png";
 import { Sheet, SheetTrigger, SheetContent } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
+import { SignInButton, SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 
 function Header() {
   return (
@@ -24,13 +25,12 @@ function Header() {
         >
           Subscribe
         </Link>
-        <Link
-          href="#"
-          className="text-sm font-medium hover:underline underline-offset-4"
-          prefetch={false}
-        >
-          Log In
-        </Link>
+        <SignedOut>
+          <SignInButton className="text-sm font-medium hover:underline underline-offset-4" />
+        </SignedOut>
+        <SignedIn>
+          <UserButton />
+        </SignedIn>
       </nav>
       <Sheet>
         <SheetTrigger asChild>

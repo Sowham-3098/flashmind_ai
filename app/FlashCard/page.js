@@ -6,8 +6,9 @@
 "use client"
 
 import { useState } from "react"
-import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
+import { Input } from "@/components/ui/input"
+
 import Card from "../components/Card"
 import Layout from "../components/Layout"
 
@@ -65,7 +66,5 @@ export default function Component() {
         </div>
       </div>
     </Layout>
-
-
   )
 }
