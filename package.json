@@ -9,13 +9,11 @@
     "lint": "next lint"
   },
   "dependencies": {
-<<<<<<< HEAD
     "@clerk/nextjs": "^5.3.1",
-=======
     "@google/generative-ai": "^0.16.0",
->>>>>>> c98bb979affb3479852bbf966ff23a4c02491355
     "@radix-ui/react-collapsible": "^1.1.0",
     "@radix-ui/react-dialog": "^1.1.1",
+    "@radix-ui/react-select": "^2.1.1",
     "@radix-ui/react-slot": "^1.1.0",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",

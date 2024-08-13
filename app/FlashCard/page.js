@@ -1,39 +1,47 @@
 "use client";
 
-<<<<<<< HEAD
-import { useState } from "react"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-
-import Card from "../components/Card"
-import Layout from "../components/Layout"
-=======
 import { useState } from "react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
+import {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectLabel,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select"
 import Card from "../components/Card";
 import Layout from "../components/Layout";
 import { generateFlashcards } from "../api/api"; // Import the generateFlashcards function
->>>>>>> c98bb979affb3479852bbf966ff23a4c02491355
 
 export default function Component() {
   const [topic, setTopic] = useState("");
+  const [difficulty, setDifficulty] = useState("medium");
   const [questions, setQuestions] = useState([]);
 
   const handleTopicChange = (e) => {
     setTopic(e.target.value);
   };
 
+  const handleDifficultyChange = (value) => {
+    setDifficulty(value);
+  }
+
   const generateQuestions = async (e) => {
     e.preventDefault();
     try {
-      const flashcards = await generateFlashcards(topic, "medium"); 
+
+      const flashcards = await generateFlashcards(topic, difficulty);
       setQuestions(flashcards);
       console.log(flashcards);
     } catch (error) {
       console.error("Error:", error.message);
     }
   };
+
+  console.log(questions);
 
   return (
     <Layout>
@@ -51,6 +59,19 @@ export default function Component() {
               onChange={handleTopicChange}
               className="flex-1 mr-4"
             />
+            <Select onValueChange={handleDifficultyChange}>
+              <SelectTrigger className="w-[180px] mr-4">
+                <SelectValue placeholder="Select Level" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectGroup>
+
+                  <SelectItem value="easy">Easy</SelectItem>
+                  <SelectItem value="medium">Medium</SelectItem>
+                  <SelectItem value="hard">Hard</SelectItem>
+                </SelectGroup>
+              </SelectContent>
+            </Select>
             <Button type="submit">Generate</Button>
           </form>
           <div className="flex justify-center items-center">
@@ -61,7 +82,7 @@ export default function Component() {
                   title={`Flashcard ${index + 1}`}
                   question={question.front}
                   answer={question.back}
-                  difficult="medium"
+                  difficult={question.difficulty}
                 />
               ))}
             </div>
@@ -69,10 +90,5 @@ export default function Component() {
         </div>
       </div>
     </Layout>
-<<<<<<< HEAD
-  )
-}
-=======
   );
 }
->>>>>>> c98bb979affb3479852bbf966ff23a4c02491355

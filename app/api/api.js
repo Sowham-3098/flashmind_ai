@@ -27,7 +27,8 @@ const model = genAI.getGenerativeModel({
       "flashcards": [
         {
           "front": "Question text",
-          "back": "Answer text"
+          "back": "Answer text",
+          "difficulty: "easy" | "medium" | "hard"
         }
       ]
     }
