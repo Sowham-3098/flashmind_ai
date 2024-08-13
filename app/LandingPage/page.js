@@ -48,8 +48,8 @@ export default function Landing() {
               <div>
                 <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl">AI-Powered Quiz Generation</h2>
                 <p className="mt-4 text-muted-foreground md:text-xl">
-                  Flashmind AI's quiz card generator uses cutting-edge natural language processing and machine learning
-                  algorithms to craft engaging and challenging quizzes on any topic you choose.
+                Flashmind AI&apos;s quiz card generator uses cutting-edge natural language processing and machine learning algorithms to craft engaging and challenging quizzes on any topic you choose.
+
                 </p>
                 <ul className="mt-6 space-y-4">
                   <li className="flex items-start gap-2">
