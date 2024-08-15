@@ -43,7 +43,7 @@ const generationConfig = {
   responseMimeType: "text/plain",
 };
 
-export async function generateFlashcards(topic, difficulty) {
+async function generateFlashcards(topic, difficulty) {
   try {
     const chatSession = model.startChat({
       generationConfig,
@@ -53,19 +53,28 @@ export async function generateFlashcards(topic, difficulty) {
     const message = `Generate flashcards on the topic "${topic}" with difficulty level "${difficulty}".`;
     const result = await chatSession.sendMessage(message);
 
-    // Get the response text
     let responseText = await result.response.text();
-
-    // Clean the response text to remove any unwanted characters or backticks
     responseText = responseText.replace(/```json/g, '').replace(/```/g, '').trim();
 
-    // Parse the cleaned response
     const flashcardsData = JSON.parse(responseText);
-
-    // Return the flashcards array
     return flashcardsData.flashcards;
   } catch (error) {
     console.error("Error parsing response or fetching flashcards:", error.message);
     return [];
+  }
+}
+
+export async function POST(req) {
+  try {
+    const { topic, difficulty } = await req.json();
+    const flashcards = await generateFlashcards(topic, difficulty);
+    return new Response(JSON.stringify({ flashcards }), {
+      headers: { "Content-Type": "application/json" },
+    });
+  } catch (error) {
+    return new Response(
+      JSON.stringify({ error: "Failed to generate flashcards" }),
+      { status: 500, headers: { "Content-Type": "application/json" } }
+    );
   }
 }
