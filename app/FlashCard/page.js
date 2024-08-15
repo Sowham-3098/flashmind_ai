@@ -113,11 +113,11 @@ export default function Component() {
     fetchPreviousTopics();
   }, [userId]);
 
-  console.log(questions, userId);
+  // console.log(questions, userId);
 
-  if (!userId) {
-    return <Landing/>;
-  }
+  // if (!userId) {
+  //   return <Landing/>;
+  // }
 
   if (!isLoaded) {
     return <div>Loading...</div>;
