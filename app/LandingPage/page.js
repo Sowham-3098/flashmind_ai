@@ -1,4 +1,7 @@
+'use client'
+
 import Link from "next/link";
+
 
 import { Collapsible, CollapsibleTrigger, CollapsibleContent } from "@/components/ui/collapsible";
 import Image from "next/image";
@@ -7,13 +10,20 @@ import bg from "../../asset/img/bg.png";
 import bg1 from "../../asset/img/bg1.png";
 
 import Layout from "../components/Layout";
+import toast, { Toaster } from 'react-hot-toast';
+import { useEffect } from "react";
 
-const { NextFetchEvent } = require("next/server");
 
-export default function Landing() {
+
+export default function Landing({ errorMessage }) {
+  useEffect(() => {
+    if (errorMessage)
+      toast.error(errorMessage);
+
+  })
   return (
     <Layout>
-
+      <Toaster />
       <main className="flex-1">
         <section className="relative w-full py-12 md:py-24 lg:py-32 xl:py-48">
           <Image
@@ -33,6 +43,7 @@ export default function Landing() {
               <div>
                 <Link
                   href="/FlashCard"
+
                   className="inline-flex h-10 items-center justify-center rounded-md bg-primary px-8 text-sm font-medium text-primary-foreground shadow transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50"
                   prefetch={false}
                 >

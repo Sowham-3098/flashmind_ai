@@ -9,7 +9,7 @@ import {
 } from "@/components/ui/card";
 import { Button } from "@/components/ui/button"; // Assuming Button component exists
 
-function FlipCard({ title, question, answer, difficult = "easy" }) {
+function FlipCard({ title, question, answer, difficulty = "easy" }) {
   const [isFlipped, setIsFlipped] = useState(false);
 
   const handleToggle = () => {
@@ -26,14 +26,14 @@ function FlipCard({ title, question, answer, difficult = "easy" }) {
               <CardDescription>
                 <span
                   className={`  ${
-                    difficult === "easy"
+                    difficulty === "easy"
                       ? "text-green-500 bg-green-500/20"
-                      : difficult === "medium"
+                      : difficulty === "medium"
                       ? "text-yellow-500 bg-yellow-500/20"
                       : "text-red-500 bg-red-500/20"
                   } p-1 px-2 rounded-full`}
                 >
-                  {difficult}
+                  {difficulty}
                 </span>
               </CardDescription>
             </CardHeader>
@@ -54,14 +54,14 @@ function FlipCard({ title, question, answer, difficult = "easy" }) {
               <CardDescription>
                 <span
                   className={`  ${
-                    difficult === "easy"
+                    difficulty === "easy"
                       ? "text-green-500 bg-green-500/20"
-                      : difficult === "medium"
+                      : difficulty === "medium"
                       ? "text-yellow-500 bg-yellow-500/20"
                       : "text-red-500 bg-red-500/20"
                   } p-1 px-2 rounded-full`}
                 >
-                  {difficult}
+                  {difficulty}
                 </span>
               </CardDescription>
             </CardHeader>
