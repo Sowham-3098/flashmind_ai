@@ -113,6 +113,8 @@ export default function Component() {
     fetchPreviousTopics();
   }, [userId]);
 
+  console.log(questions, userId);
+  
   if (!userId) {
     return <Landing  />;
   }
