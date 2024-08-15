@@ -14,7 +14,7 @@ import {
 } from "@/components/ui/select"
 import Card from "../components/Card";
 import Layout from "../components/Layout";
-import { generateFlashcards } from "../api/api"; // Import the generateFlashcards function
+import { generateFlashcards } from "../api/generate/route"; // Import the generateFlashcards function
 
 export default function Component() {
   const [topic, setTopic] = useState("");

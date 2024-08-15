@@ -18,8 +18,15 @@ function Header() {
         <span className="sr-only">Flashmind AI Quiz Generator</span>
       </Link>
       <nav className="ml-auto hidden lg:flex gap-4 sm:gap-6">
+      <Link
+          href="/LandingPage"
+          className="text-sm font-medium hover:underline underline-offset-4"
+          prefetch={false}
+        >
+          Home
+        </Link>
         <Link
-          href="#"
+          href="/Subscription"
           className="text-sm font-medium hover:underline underline-offset-4"
           prefetch={false}
         >
