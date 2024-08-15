@@ -17,12 +17,12 @@ function FlipCard({ title, question, answer, difficulty = "easy" }) {
   };
 
   return (
-    <div className="flip-card-container w-[350px] h-[300px] ">
+    <div className="flip-card-container w-[350px] h-[300px] grow">
       <div className={`flip-card ${isFlipped ? "flipped" : ""} relative`}>
         <div className="flip-card-front absolute">
           <Card className="w-[350px] h-[300px] ">
             <CardHeader>
-              <CardTitle>{title}</CardTitle>
+              <CardTitle className="text-2xl mb-2">{title}</CardTitle>
               <CardDescription>
                 <span
                   className={`  ${

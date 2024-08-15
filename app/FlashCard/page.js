@@ -1,8 +1,9 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+
 import { Skeleton } from "@/components/ui/skeleton";
 import {
   Select,
@@ -83,6 +84,7 @@ export default function Component() {
       return;
     }
     setLoading(true);
+    setQuestions([]);
     try {
       const flashcards = await generateFlashcards(topic, difficulty);
       setQuestions(flashcards);
@@ -126,7 +128,7 @@ export default function Component() {
   return (
     <Layout>
       <div className="container mx-auto py-12 px-4 sm:px-6 lg:px-8">
-        <div className="mb-8 flex flex-row justify-between items-center">
+        <div className="mb-8 flex flex-row flex-wrap gap-4 justify-between items-center">
           <div>
             <h1 className="text-3xl font-bold mb-2">Flashmind Card Generator</h1>
             <p className="text-muted-foreground">
@@ -139,7 +141,7 @@ export default function Component() {
           </div>
         </div>
         <div className="mb-8">
-          <form onSubmit={generateQuestions} className="flex items-center mb-4">
+          <form onSubmit={generateQuestions} className="flex items-center mb-4 flex-wrap">
             <Input
               type="text"
               placeholder="Enter a topic"
@@ -148,7 +150,7 @@ export default function Component() {
               className="flex-1 mr-4"
             />
             <Select onValueChange={handleDifficultyChange}>
-              <SelectTrigger className="w-[180px] mr-4">
+              <SelectTrigger className="flex-1 max-w-[180px] mr-4">
                 <SelectValue placeholder="Select Level" />
               </SelectTrigger>
               <SelectContent>
@@ -174,19 +176,21 @@ export default function Component() {
                 </div>
               </div>
             )}
-            {questions.length === 0 && !loading && (
-              <div className="text-center text-primary-foreground rounded-md relative bg-gray-200 w-full h-[40vh]">
-                <span className="text-md bg-neutral-600 p-2 rounded-md absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]">No cards</span>
-              </div>
-            )}
-            <div className="grid grid-cols-3 gap-4">
-              {loading && questions.length === 0 && (
+          </div>
+          {questions.length === 0 && !loading && (
+            <div className="text-center text-primary-foreground rounded-md relative bg-gray-200 w-full h-[40vh]">
+              <span className="text-md bg-neutral-600 p-2 rounded-md absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]">No cards</span>
+            </div>
+          )}
+          <div className="">
+            <div className="flex flex-row flex-wrap  ">
+              {loading && (
                 Array.from({ length: 9 }).map((_, index) => (
-                  <div key={index} className="flex flex-col space-y-3">
+                  <div key={index} className="flex flex-col w-[350px] h-[300px] space-y-3 grow mb-2">
                     <Skeleton className="w-[350px] h-[300px] rounded-xl" />
-                    <div className="space-y-2">
-                      <Skeleton className="h-4 w-[350px]" />
-                      <Skeleton className="h-4 w-[350px]" />
+                    <div className="space-y-2 flex">
+                      <Skeleton className="h-6 w-1/2" />
+
                     </div>
                   </div>
                 ))
