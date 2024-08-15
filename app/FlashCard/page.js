@@ -118,7 +118,7 @@ export default function Component() {
   }, [userId]);
 
   if (!userId) {
-    return <Landing errorMessage="Please sign in to generate flashcards." />;
+    return <Landing  />;
   }
 
   if (!isLoaded) {
