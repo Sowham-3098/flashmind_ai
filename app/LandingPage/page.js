@@ -15,11 +15,10 @@ import { useEffect } from "react";
 
 
 
-export default function Landing({ errorMessage }) {
+export default function Landing({ errorMessage = "" }) {
   useEffect(() => {
-    if (errorMessage)
+    if (errorMessage!== "")
       toast.error(errorMessage);
-
   })
   return (
     <Layout>
