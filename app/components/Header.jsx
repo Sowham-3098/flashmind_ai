@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
-import logo from "../../asset/img/logo.png";
+import Logo from "../../asset/img/Logo.png";
 import { Sheet, SheetTrigger, SheetContent } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
 import { SignInButton, SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
@@ -14,7 +14,7 @@ function Header() {
         className="flex items-center justify-center"
         prefetch={false}
       >
-        <Image src={logo} width={64} className=" " alt="Flashmind AI Logo" />
+        <Image src={Logo} width={64} className=" " alt="Flashmind AI Logo" />
         <span className="sr-only">Flashmind AI Quiz Generator</span>
       </Link>
       <nav className="ml-auto hidden lg:flex gap-4 sm:gap-6">
@@ -42,7 +42,7 @@ function Header() {
         <SheetContent side="left">
           <Link href="#" prefetch={false}>
             <Image
-              src={logo}
+              src={Logo}
               width={64}
               className=" "
               alt="Flashmind AI Logo"
