@@ -15,11 +15,8 @@ import { useEffect } from "react";
 
 
 
-export default function Landing({ errorMessage = "" }) {
-  useEffect(() => {
-    if (errorMessage!== "")
-      toast.error(errorMessage);
-  })
+export default function Landing() {
+
   return (
     <Layout>
       <Toaster />
