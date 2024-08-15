@@ -114,9 +114,9 @@ export default function Component() {
   }, [userId]);
 
   console.log(questions, userId);
-  
+
   if (!userId) {
-    return <Landing  />;
+    return <Landing/>;
   }
 
   if (!isLoaded) {
