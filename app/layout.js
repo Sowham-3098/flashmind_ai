@@ -1,5 +1,5 @@
 
-
+import { Analytics } from "@vercel/analytics/react"
 import { Inter } from "next/font/google";
 import {
   ClerkProvider,
@@ -20,8 +20,9 @@ export default function RootLayout({ children }) {
     <ClerkProvider>
       <html lang="en">
         <body>
-
+  
           {children}
+          <Analytics />
         </body>
       </html>
     </ClerkProvider>
