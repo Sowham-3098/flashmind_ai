@@ -46,13 +46,12 @@ const CheckoutPage = ({ amount }) => {
       elements,
       clientSecret,
       confirmParams: {
-        return_url: `http://www.localhost:3000/payment-success?amount=${amount}`,
+        return_url: `${window.location.origin}/payment-success?amount=${amount}`,
       },
     });
 
     if (error) {
-      // This point is only reached if there's an immediate error when
-      // confirming the payment. Show the error to your customer (for example, payment details incomplete)
+      // Show the error to your customer (for example, payment details incomplete)
       setErrorMessage(error.message);
     } else {
       // The payment UI automatically closes with a success animation.
