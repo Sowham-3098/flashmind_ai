@@ -4,7 +4,7 @@ const apiKey = process.env.NEXT_PUBLIC_GEMINI_API_KEY;
 const genAI = new GoogleGenerativeAI(apiKey);
 
 const model = genAI.getGenerativeModel({
-  model: "gemini-1.5-flash",
+  model: "gemini-2.0-flash",
   systemInstruction: `
     You are a Flashcard creator, your task is to generate concise and effective flashcards based on the given topic or content, follow these guidelines:
 
